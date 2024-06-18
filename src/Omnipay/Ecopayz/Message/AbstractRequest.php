@@ -16,14 +16,14 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      *
      * @var string URL
      */
-    protected $testEndpoint = 'https://secure.test.ecopayz.com/services/MerchantAPI/MerchantAPIService.asmx';
+    protected $testEndpoint = 'https://merchantapi.test.payz.com/MerchantAPIService.asmx';
 
     /**
      * Live Endpoint URL
      *
      * @var string URL
      */
-    protected $liveEndpoint = 'https://secure.ecopayz.com/services/MerchantAPI/MerchantAPIService.asmx';
+    protected $liveEndpoint = 'https://merchantapi.payz.com/MerchantAPIService.asmx';
 
     /**
      * Get the Merchant ID
