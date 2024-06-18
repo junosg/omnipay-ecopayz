@@ -16,8 +16,10 @@ use Omnipay\Common\Message\RequestInterface;
  */
 class PurchaseResponse extends AbstractResponse implements RedirectResponseInterface
 {
-    protected $testEndpoint = 'https://secure.test.ecopayz.com/PrivateArea/WithdrawOnlineTransfer.aspx';
-    protected $liveEndpoint = 'https://secure.ecopayz.com/PrivateArea/WithdrawOnlineTransfer.aspx';
+    protected $testEndpoint = 'https://myaccount.test.payz.com/purchase/create';
+    protected $liveEndpoint = 'https://myaccount.payz.com/purchase/create';
+    protected $testRedirectEndpoint = 'https://myaccount.test.payz.com/purchase/request';
+    protected $redirectEndpoint = 'https://myaccount.payz.com/purchase/request';
 
     public function __construct(RequestInterface $request, $data)
     {
@@ -37,7 +39,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
 
     public function getRedirectUrl()
     {
-        return $this->getEndpoint() . '?' . http_build_query($this->data, '', '&');
+        return $this->getRedirectEndpoint() . '?' . http_build_query($this->data, '', '&');
     }
 
     public function getRedirectMethod()
@@ -53,5 +55,10 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
     protected function getEndpoint()
     {
         return $this->getRequest()->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
+    }
+
+    protected function getRedirectEndpoint()
+    {
+        return $this->getRequest()->getTestMode() ? $this->testRedirectEndpoint : $this->redirectEndpoint;
     }
 }

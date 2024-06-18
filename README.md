@@ -22,7 +22,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "dercoder/omnipay-ecopayz": "~1.0"
+        "dercoder/omnipay-ecopayz": "~2.0.x-dev"
     }
 }
 ```
